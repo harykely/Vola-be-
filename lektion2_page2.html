@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HaryFi – Lektion 2: Seite 2 (Sich vorstellen)</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #17120d;
+
+            background: linear-gradient(
+                -45deg,
+                #ff4500,
+                #ff7e00,
+                #ffd000,
+                #00c9ff,
+                #7c3aed,
+                #ff3cac
+            );
+
+            background-size: 500% 500%;
+            animation: gradientMove 18s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .22);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .45);
+        }
+
+        .word-card {
+            background: rgba(255, 255, 255, .92);
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease,
+                background-color .2s ease;
+        }
+
+        .word-card:hover {
+            transform: translateX(4px);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .15);
+        }
+
+        .word-card.playing {
+            animation: pulseCard .55s ease;
+            border-color: #00c9ff;
+        }
+
+        @keyframes pulseCard {
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.02);
+            }
+
+            70% {
+                transform: scale(.98);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .main-button,
+        .audio-button {
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .main-button:hover,
+        .audio-button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .25);
+        }
+
+        .main-button:active,
+        .audio-button:active {
+            transform: scale(.96);
+        }
+
+        /* =====================================================
+           RESPONSIVE IMAGES (MOBILE / TABLETTE / ORDI)
+        ===================================================== */
+        
+        /* 📱 Mobile (par défaut) */
+        .illustration {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        }
+
+        /* 📱 Tablette (à partir de 768px) */
+        @media (min-width: 768px) {
+            .illustration {
+                height: 360px;
+            }
+        }
+
+        /* 💻 Ordinateur (à partir de 1024px) */
+        @media (min-width: 1024px) {
+            .illustration {
+                height: 460px;
+            }
+        }
+
+        .hidden-section {
+            display: none;
+        }
+
+        .visible-section {
+            display: block;
+            animation: appear .7s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status {
+            min-height: 25px;
+            margin-top: 15px;
+            font-weight: 800;
+            opacity: .8;
+        }
+
+        .back-button {
+            transition: transform .2s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="px-4 md:px-8 py-5">
+
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
+
+        <a
+            href="lektion2.html"
+            class="glass rounded-2xl px-4 md:px-5 py-2.5 md:py-3 font-black text-base md:text-lg back-button"
+        >
+            ← Lektion 2
+        </a>
+
+        <div class="glass rounded-full px-4 md:px-5 py-2 font-bold text-xs md:text-sm">
+            🇩🇪 Deutschkurs
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main class="max-w-4xl mx-auto px-4 md:px-8 pb-20">
+
+
+<!-- =====================================================
+     TITRE
+====================================================== -->
+
+<section class="text-center pt-4 md:pt-8 pb-8 md:pb-10">
+
+    <div
+        class="
+            inline-block
+            glass
+            rounded-full
+            px-4
+            py-1.5
+            mb-4
+            text-xs
+            font-black
+            uppercase
+            tracking-widest
+        "
+    >
+        Lektion 2 · Seite 2
+    </div>
+
+
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mb-4 md:mb-5">
+        Sich vorstellen
+    </h1>
+
+
+    <p class="text-base sm:text-lg md:text-xl font-semibold max-w-2xl mx-auto opacity-90">
+        Lerne dich formell und informell vorzustellen.
+    </p>
+
+
+    <!-- BOUTON AUDIO GÉNÉRAL -->
+
+    <button
+        id="startButton"
+        type="button"
+        class="
+            main-button
+            mt-6
+            md:mt-8
+            bg-black
+            text-white
+            px-8
+            md:px-10
+            py-4
+            md:py-5
+            rounded-2xl
+            md:rounded-3xl
+            font-black
+            text-lg
+            md:text-xl
+            shadow-2xl
+        "
+    >
+        ▶️ Lektion starten
+    </button>
+
+
+    <div id="status" class="status text-sm md:text-base">
+        Klicke auf „Lektion starten“.
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FORMELL
+====================================================== -->
+
+<section
+    id="formellSection"
+    class="hidden-section"
+>
+
+    <div class="glass rounded-3xl md:rounded-[32px] p-5 sm:p-8 md:p-10">
+
+        <div class="text-center mb-6 md:mb-8">
+
+            <div class="text-4xl md:text-5xl mb-3 md:mb-4">
+                🤝
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black">
+                Formell
+            </h2>
+
+            <p class="font-semibold opacity-75 mt-1 md:mt-2 text-sm md:text-base">
+                Formelle Sätze zum Vorstellen
+            </p>
+
+
+            <button
+                id="formellAudioButton"
+                type="button"
+                class="
+                    audio-button
+                    mt-4
+                    md:mt-5
+                    bg-black
+                    text-white
+                    px-6
+                    md:px-7
+                    py-2.5
+                    md:py-3
+                    rounded-xl
+                    md:rounded-2xl
+                    font-black
+                    text-sm
+                    md:text-base
+                    shadow-xl
+                "
+            >
+                ▶️ Erklärung Formell
+            </button>
+
+        </div>
+
+
+        <img
+            class="illustration mb-6 md:mb-8"
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
+            alt="Formelle Vorstellung"
+        >
+
+
+        <!-- LISTE LIGNE 1, 2, 3 FORMELLES -->
+
+        <div
+            id="formellWords"
+            class="flex flex-col gap-3 md:gap-4"
+        >
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INFORMELL
+====================================================== -->
+
+<section
+    id="informellSection"
+    class="hidden-section mt-8 md:mt-12"
+>
+
+    <div class="glass rounded-3xl md:rounded-[32px] p-5 sm:p-8 md:p-10">
+
+        <div class="text-center mb-6 md:mb-8">
+
+            <div class="text-4xl md:text-5xl mb-3 md:mb-4">
+                👋
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black">
+                Informell
+            </h2>
+
+            <p class="font-semibold opacity-75 mt-1 md:mt-2 text-sm md:text-base">
+                Informelle Sätze zum Vorstellen
+            </p>
+
+
+            <button
+                id="informellAudioButton"
+                type="button"
+                class="
+                    audio-button
+                    mt-4
+                    md:mt-5
+                    bg-black
+                    text-white
+                    px-6
+                    md:px-7
+                    py-2.5
+                    md:py-3
+                    rounded-xl
+                    md:rounded-2xl
+                    font-black
+                    text-sm
+                    md:text-base
+                    shadow-xl
+                "
+            >
+                ▶️ Erklärung Informell
+            </button>
+
+        </div>
+
+
+        <img
+            class="illustration mb-6 md:mb-8"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+            alt="Informelle Vorstellung"
+        >
+
+
+        <!-- LISTE LIGNE 1, 2, 3, 4 INFORMELLES -->
+
+        <div
+            id="informellWords"
+            class="flex flex-col gap-3 md:gap-4"
+        >
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VOKABULAR
+====================================================== -->
+
+<section
+    id="vocabSection"
+    class="hidden-section mt-8 md:mt-12"
+>
+
+    <div class="glass rounded-3xl md:rounded-[32px] p-5 sm:p-8 md:p-10">
+
+        <div class="text-center mb-6 md:mb-7">
+
+            <div class="text-3xl md:text-4xl mb-2 md:mb-3">
+                📚
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black">
+                Vokabular
+            </h2>
+
+
+            <button
+                id="vocabAudioButton"
+                type="button"
+                class="
+                    audio-button
+                    mt-4
+                    md:mt-5
+                    bg-black
+                    text-white
+                    px-6
+                    md:px-7
+                    py-2.5
+                    md:py-3
+                    rounded-xl
+                    md:rounded-2xl
+                    font-black
+                    text-sm
+                    md:text-base
+                    shadow-xl
+                "
+            >
+                ▶️ Vokabular anhören
+            </button>
+
+        </div>
+
+
+        <!-- LISTE LIGNE 1, 2, 3 VOKABULAR -->
+
+        <div class="flex flex-col gap-3 md:gap-4">
+
+            <!-- LIGNE 1 -->
+            <div class="word-card rounded-2xl p-4 md:p-5 shadow-lg flex items-center gap-3 md:gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-xs md:text-sm rounded-xl w-7 h-7 md:w-8 md:h-8 flex items-center justify-center">
+                    1
+                </span>
+                <div>
+                    <div class="text-base md:text-lg font-black text-gray-900">Ich heiße …</div>
+                    <div class="text-xs md:text-sm font-semibold text-gray-600 mt-0.5 md:mt-1">Je m'appelle … / Izaho dia …</div>
+                </div>
+            </div>
+
+            <!-- LIGNE 2 -->
+            <div class="word-card rounded-2xl p-4 md:p-5 shadow-lg flex items-center gap-3 md:gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-xs md:text-sm rounded-xl w-7 h-7 md:w-8 md:h-8 flex items-center justify-center">
+                    2
+                </span>
+                <div>
+                    <div class="text-base md:text-lg font-black text-gray-900">Mein Name ist …</div>
+                    <div class="text-xs md:text-sm font-semibold text-gray-600 mt-0.5 md:mt-1">Mon nom est … / Ny anarako dia …</div>
+                </div>
+            </div>
+
+            <!-- LIGNE 3 -->
+            <div class="word-card rounded-2xl p-4 md:p-5 shadow-lg flex items-center gap-3 md:gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-xs md:text-sm rounded-xl w-7 h-7 md:w-8 md:h-8 flex items-center justify-center">
+                    3
+                </span>
+                <div>
+                    <div class="text-base md:text-lg font-black text-gray-900">Ich komme aus …</div>
+                    <div class="text-xs md:text-sm font-semibold text-gray-600 mt-0.5 md:mt-1">Je viens de … / Avy any …</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NAVIGATION DE BAS DE PAGE
+====================================================== -->
+
+<section class="flex flex-col sm:flex-row justify-between items-center gap-3 md:gap-4 mt-10 md:mt-14">
+
+    <!-- PRÉCÉDENT (PAGE 1) -->
+    <a
+        href="lektion2_page1.html"
+        class="
+            bg-black
+            text-white
+            px-6
+            md:px-8
+            py-3.5
+            md:py-4
+            rounded-2xl
+            font-black
+            text-sm
+            md:text-base
+            shadow-xl
+            w-full
+            sm:w-auto
+            text-center
+        "
+    >
+        ← Seite 1
+    </a>
+
+    <!-- SOMMAIRE LEKTION 2 -->
+    <a
+        href="lektion2.html"
+        class="
+            glass
+            text-black
+            px-6
+            md:px-8
+            py-3.5
+            md:py-4
+            rounded-2xl
+            font-black
+            text-sm
+            md:text-base
+            shadow-md
+            w-full
+            sm:w-auto
+            text-center
+        "
+    >
+        Sommaire
+    </a>
+
+    <!-- SUIVANT (LEKTION 3) -->
+    <a
+        href="lektion3.html"
+        class="
+            bg-black
+            text-white
+            px-6
+            md:px-8
+            py-3.5
+            md:py-4
+            rounded-2xl
+            font-black
+            text-sm
+            md:text-base
+            shadow-xl
+            w-full
+            sm:w-auto
+            text-center
+        "
+    >
+        Lektion 3 ➜
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+/* =====================================================
+   GITHUB PAGES AUDIO
+===================================================== */
+
+const AUDIO_BASE =
+    "https://harisoaolivia08-crypto.github.io/HaryFi/Audio/";
+
+
+/* =====================================================
+   AUDIOS D'EXPLICATION SECTIONS
+===================================================== */
+
+const audioFiles = {
+    start: AUDIO_BASE + "l2_page2_lektion_starten.mp3",
+    formell: AUDIO_BASE + "l2_page2_formell.mp3",
+    informell: AUDIO_BASE + "l2_page2_informell.mp3",
+    vocabular: AUDIO_BASE + "l2_page2_vokabular.mp3"
+};
+
+
+
+/* =====================================================
+   PHRASES FORMELLES (LIGNE 1, 2, 3)
+===================================================== */
+
+const formellData = [
+    {
+        de: "Guten Morgen, ich heiße Hary.",
+        fr: "Bonjour, je m'appelle Hary.",
+        audio: AUDIO_BASE + "l2_p2_formell_1.mp3"
+    },
+    {
+        de: "Guten Tag, mein Name ist Fitiavana. Ich komme aus Madagaskar.",
+        fr: "Bonjour, mon nom est Fitiavana. Je viens de Madagascar.",
+        audio: AUDIO_BASE + "l2_p2_formell_2.mp3"
+    },
+    {
+        de: "Guten Abend, ich heiße Ndimby. Ich komme aus Madagaskar, aus Fianarantsoa.",
+        fr: "Bonsoir, je m'appelle Ndimby. Je viens de Madagascar, de Fianarantsoa.",
+        audio: AUDIO_BASE + "l2_p2_formell_3.mp3"
+    }
+];
+
+
+
+/* =====================================================
+   PHRASES INFORMELLES (LIGNE 1, 2, 3, 4)
+===================================================== */
+
+const informellData = [
+    {
+        de: "Servus, ich bin Anna. Ich komme aus Deutschland, aus Berlin.",
+        fr: "Salut, je suis Anna. Je viens d'Allemagne, de Berlin.",
+        audio: AUDIO_BASE + "l2_p2_informell_1.mp3"
+    },
+    {
+        de: "Moin, ich bin Max. Ich komme aus Deutschland, aus Berlin.",
+        fr: "Salut, je suis Max. Je viens d'Allemagne, de Berlin.",
+        audio: AUDIO_BASE + "l2_p2_informell_2.mp3"
+    },
+    {
+        de: "Hallo, ich bin Marie. Ich komme aus Deutschland, aus Berlin. Wie geht es dir?",
+        fr: "Salut, je suis Marie. Je viens d'Allemagne, de Berlin. Comment vas-tu ?",
+        audio: AUDIO_BASE + "l2_p2_informell_3.mp3"
+    },
+    {
+        de: "Ich bin Olivia. Ich komme aus Madagaskar, aus Fandriana. Mir geht es gut. Und dir?",
+        fr: "Je suis Olivia. Je viens de Madagascar, de Fandriana. Je vais bien. Et toi ?",
+        audio: AUDIO_BASE + "l2_p2_informell_4.mp3"
+    }
+];
+
+
+
+/* =====================================================
+   ÉLÉMENTS DOM
+===================================================== */
+
+const startButton = document.getElementById("startButton");
+const formellAudioButton = document.getElementById("formellAudioButton");
+const informellAudioButton = document.getElementById("informellAudioButton");
+const vocabAudioButton = document.getElementById("vocabAudioButton");
+
+const status = document.getElementById("status");
+const formellSection = document.getElementById("formellSection");
+const informellSection = document.getElementById("informellSection");
+const vocabSection = document.getElementById("vocabSection");
+
+const formellContainer = document.getElementById("formellWords");
+const informellContainer = document.getElementById("informellWords");
+
+let currentAudio = null;
+
+
+
+/* =====================================================
+   ARRÊTER L'AUDIO EN COURS
+===================================================== */
+
+function stopCurrentAudio() {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    }
+}
+
+
+
+/* =====================================================
+   JOUER UN AUDIO
+===================================================== */
+
+function playAudio(url, text, card = null) {
+    stopCurrentAudio();
+
+    if (card) {
+        card.classList.remove("playing");
+        void card.offsetWidth;
+        card.classList.add("playing");
+    }
+
+    status.textContent = "🔊 " + text;
+
+    const audio = new Audio(url);
+    currentAudio = audio;
+    audio.volume = 1;
+
+    audio.addEventListener("ended", () => {
+        if (card) {
+            card.classList.remove("playing");
+        }
+        currentAudio = null;
+    }, { once: true });
+
+    audio.addEventListener("error", () => {
+        if (card) {
+            card.classList.remove("playing");
+        }
+        status.textContent = "⚠️ Audiodatei noch nicht vorhanden.";
+        console.log("Audio nicht gefunden:", url);
+        currentAudio = null;
+    }, { once: true });
+
+    audio.play().catch(error => {
+        console.log("Audio konnte nicht abgespielt werden:", error);
+    });
+}
+
+
+
+/* =====================================================
+   CRÉATION DES LIGNES NUMÉROTÉES RESPONSIVES (1, 2, 3...)
+===================================================== */
+
+function createLineCard(item, index, container) {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "word-card rounded-2xl p-4 md:p-5 text-left shadow-md flex items-center justify-between gap-3 md:gap-4 cursor-pointer border border-white/60";
+
+    card.innerHTML = `
+        <div class="flex items-start gap-3 md:gap-4">
+            <span class="flex-shrink-0 bg-black text-white font-black text-xs md:text-sm rounded-xl w-7 h-7 md:w-8 md:h-8 flex items-center justify-center mt-0.5">
+                ${index + 1}
+            </span>
+            <div>
+                <div class="text-base sm:text-lg md:text-xl font-black text-gray-900 leading-snug">
+                    ${item.de}
+                </div>
+                <div class="text-xs sm:text-sm font-semibold text-gray-600 mt-1">
+                    ${item.fr}
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-shrink-0 text-xs font-bold text-gray-700 bg-gray-100 px-2.5 md:px-3 py-1.5 md:py-2 rounded-xl flex items-center gap-1.5">
+            <span>🔊</span>
+            <span class="hidden sm:inline">Anhören</span>
+        </div>
+    `;
+
+    card.addEventListener("click", () => {
+        playAudio(item.audio, `Ligne ${index + 1}: ${item.de}`, card);
+    });
+
+    container.appendChild(card);
+}
+
+
+
+/* =====================================================
+   INITIALISATION DES PHRASES
+===================================================== */
+
+formellData.forEach((item, index) => createLineCard(item, index, formellContainer));
+informellData.forEach((item, index) => createLineCard(item, index, informellContainer));
+
+
+
+/* =====================================================
+   GESTIONNAIRES D'ÉVÉNEMENTS BOUTONS
+===================================================== */
+
+startButton.addEventListener("click", () => {
+    formellSection.classList.remove("hidden-section");
+    formellSection.classList.add("visible-section");
+
+    informellSection.classList.remove("hidden-section");
+    informellSection.classList.add("visible-section");
+
+    vocabSection.classList.remove("hidden-section");
+    vocabSection.classList.add("visible-section");
+
+    playAudio(audioFiles.start, "Lektion 2 (Seite 2) – Erklärung");
+});
+
+formellAudioButton.addEventListener("click", () => {
+    playAudio(audioFiles.formell, "Erklärung Formell");
+});
+
+informellAudioButton.addEventListener("click", () => {
+    playAudio(audioFiles.informell, "Erklärung Informell");
+});
+
+vocabAudioButton.addEventListener("click", () => {
+    playAudio(audioFiles.vocabular, "Vokabular");
+});
+
+</script>
+
+</body>
+</html>

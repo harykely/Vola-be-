@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HaryFi – Lektion 2</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #17120d;
+
+            background: linear-gradient(
+                -45deg,
+                #ff4500,
+                #ff7e00,
+                #ffd000,
+                #00c9ff,
+                #7c3aed,
+                #ff3cac
+            );
+
+            background-size: 500% 500%;
+            animation: gradientMove 18s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .glass {
+            background: rgba(255,255,255,.22);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,.45);
+        }
+
+        .page-button {
+            transition: .2s ease;
+        }
+
+        .page-button:hover {
+            transform: translateY(-5px) scale(1.03);
+        }
+
+        .page-button:active {
+            transform: scale(.96);
+        }
+    </style>
+<style id="haryfi-topbar-style">
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:20px;position:sticky;top:0;z-index:50;
+  background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+.topbar-link{
+  display:inline-flex;align-items:center;padding:12px 20px;
+  border:1px solid rgba(255,255,255,.45);border-radius:16px;
+  background:rgba(255,255,255,.25);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);color:white;text-decoration:none;
+  font-weight:900;font-size:18px;transition:all .25s ease;white-space:nowrap;
+}
+.topbar-link:hover{background:rgba(255,255,255,.4)}
+.topbar-brand{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;border:1px solid rgba(255,255,255,.45);
+  border-radius:16px;background:rgba(255,255,255,.25);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  color:white;font-size:18px;font-weight:900;text-decoration:none;white-space:nowrap;
+}
+@media(max-width:520px){
+  .topbar{padding:12px;gap:8px}
+  .topbar-link{padding:10px 12px;font-size:14px}
+  .topbar-brand{padding:10px 12px;font-size:14px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar" aria-label="Hauptnavigation"><a href="index.html#a1" class="topbar-link">← A1-Lektionen</a><a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a></header>
+
+
+<main class="max-w-6xl mx-auto px-5 pb-20">
+
+    <!-- TITRE -->
+
+    <section class="text-center pt-10 pb-12">
+
+        <div
+            class="inline-block glass rounded-full px-5 py-2 mb-5
+                   text-xs font-black uppercase tracking-widest"
+        >
+            Lektion 2
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
+            Begrüßung & Verabschiedung
+        </h1>
+
+        <p class="text-lg md:text-xl font-semibold max-w-3xl mx-auto">
+            Lerne Begrüßungen und Verabschiedungen auf Deutsch.
+        </p>
+
+    </section>
+
+
+    <!-- 5 SEITEN -->
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+        <!-- SEITE 1 -->
+
+        <a
+            href="lektion2_page1.html"
+            class="
+                page-button
+                glass
+                rounded-3xl
+                p-8
+                shadow-xl
+                block
+            "
+        >
+
+            <div class="text-5xl mb-5">
+                👋
+            </div>
+
+            <div class="text-sm font-black opacity-60 mb-2">
+                SEITE 1
+            </div>
+
+            <h2 class="text-3xl font-black">
+                Begrüßung & Verabschiedung
+            </h2>
+
+            <p class="mt-3 font-semibold opacity-80">
+                Formelle und informelle Begrüßungen.
+            </p>
+
+        </a>
+
+
+        <!-- SEITE 2 -->
+
+        <a
+            href="lektion2_page2.html"
+            class="
+                page-button
+                glass
+                rounded-3xl
+                p-8
+                shadow-xl
+                block
+            "
+        >
+
+            <div class="text-5xl mb-5">
+                💬
+            </div>
+
+            <div class="text-sm font-black opacity-60 mb-2">
+                SEITE 2
+            </div>
+
+            <h2 class="text-3xl font-black">
+                Kurze Sätze zum Üben
+            </h2>
+
+            <p class="mt-3 font-semibold opacity-80">
+                Kurze Sätze sprechen und üben.
+            </p>
+
+        </a>
+
+
+        <!-- SEITE 3 -->
+
+        <a
+            href="lektion2_page3.html"
+            class="
+                page-button
+                glass
+                rounded-3xl
+                p-8
+                shadow-xl
+                block
+            "
+        >
+
+            <div class="text-5xl mb-5">
+                🎥
+            </div>
+
+            <div class="text-sm font-black opacity-60 mb-2">
+                SEITE 3
+            </div>
+
+            <h2 class="text-3xl font-black">
+                Video
+            </h2>
+
+            <p class="mt-3 font-semibold opacity-80">
+                Schaue das Lernvideo.
+            </p>
+
+        </a>
+
+
+        <!-- SEITE 4 -->
+
+        <a
+            href="lektion2_page4.html"
+            class="
+                page-button
+                glass
+                rounded-3xl
+                p-8
+                shadow-xl
+                block
+            "
+        >
+
+            <div class="text-5xl mb-5">
+                🗣️
+            </div>
+
+            <div class="text-sm font-black opacity-60 mb-2">
+                SEITE 4
+            </div>
+
+            <h2 class="text-3xl font-black">
+                Übung
+            </h2>
+
+            <p class="mt-3 font-semibold opacity-80">
+                Sprechen · Lesen · Hören · Schreiben
+            </p>
+
+        </a>
+
+
+        <!-- SEITE 5 -->
+
+        <a
+            href="lektion2_page5.html"
+            class="
+                page-button
+                glass
+                rounded-3xl
+                p-8
+                shadow-xl
+                block
+            "
+        >
+
+            <div class="text-5xl mb-5">
+                📝
+            </div>
+
+            <div class="text-sm font-black opacity-60 mb-2">
+                SEITE 5
+            </div>
+
+            <h2 class="text-3xl font-black">
+                Reflektion
+            </h2>
+
+            <p class="mt-3 font-semibold opacity-80">
+                Schreibe deine Notizen zur Lektion.
+            </p>
+
+        </a>
+
+    </section>
+
+
+    <!-- RETOUR -->
+
+    <section class="flex justify-center mt-14">
+
+        <!-- RETOUR VERS L'ÉCRAN A1 DE INDEX.HTML -->
+        <a
+            href="index.html#a1"
+            class="
+                bg-black
+                text-white
+                px-8
+                py-4
+                rounded-2xl
+                font-black
+                shadow-xl
+            "
+        >
+            ← Zurück zu den A1 Lektionen
+        </a>
+
+    </section>
+
+</main>
+
+</body>
+</html>

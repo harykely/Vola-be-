@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HaryFi – Lektion 2: Begrüßung & Verabschiedung</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #17120d;
+
+            background: linear-gradient(
+                -45deg,
+                #ff4500,
+                #ff7e00,
+                #ffd000,
+                #00c9ff,
+                #7c3aed,
+                #ff3cac
+            );
+
+            background-size: 500% 500%;
+            animation: gradientMove 18s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .22);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .45);
+        }
+
+        .word-card {
+            background: rgba(255, 255, 255, .90);
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .word-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .18);
+        }
+
+        .word-card.playing {
+            animation: pulseCard .55s ease;
+        }
+
+        @keyframes pulseCard {
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.07);
+            }
+
+            70% {
+                transform: scale(.97);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .main-button,
+        .audio-button {
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .main-button:hover,
+        .audio-button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .25);
+        }
+
+        .main-button:active,
+        .audio-button:active {
+            transform: scale(.96);
+        }
+
+        .illustration {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        }
+
+        .hidden-section {
+            display: none;
+        }
+
+        .visible-section {
+            display: block;
+            animation: appear .7s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status {
+            min-height: 25px;
+            margin-top: 15px;
+            font-weight: 800;
+            opacity: .8;
+        }
+
+        .vocab-item {
+            background: rgba(255, 255, 255, .88);
+            border-radius: 14px;
+            padding: 15px 18px;
+            font-weight: 700;
+        }
+
+        .vocab-german {
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .vocab-french {
+            margin-top: 4px;
+            opacity: .75;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="px-5 py-5">
+
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+
+        <!-- RETOUR VERS LE SOMMAIRE DE LA LEKTION 2 -->
+        <a
+            href="lektion2.html"
+            class="glass rounded-2xl px-5 py-3 font-black text-lg"
+        >
+            ← Lektion 2
+        </a>
+
+        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
+            🇩🇪 Deutschkurs
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main class="max-w-6xl mx-auto px-5 pb-20">
+
+
+<!-- =====================================================
+     TITRE
+====================================================== -->
+
+<section class="text-center pt-8 pb-10">
+
+    <div
+        class="
+            inline-block
+            glass
+            rounded-full
+            px-5
+            py-2
+            mb-5
+            text-xs
+            font-black
+            uppercase
+            tracking-widest
+        "
+    >
+        Lektion 2 · Seite 1
+    </div>
+
+
+    <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
+        Begrüßung & Verabschiedung
+    </h1>
+
+
+    <p class="text-lg md:text-xl font-semibold max-w-3xl mx-auto">
+        Lerne formelle und informelle Begrüßungen und Verabschiedungen.
+    </p>
+
+
+    <!-- =================================================
+         BOUTON AUDIO GÉNÉRAL
+    ================================================== -->
+
+    <button
+        id="startButton"
+        type="button"
+        class="
+            main-button
+            mt-8
+            bg-black
+            text-white
+            px-10
+            py-5
+            rounded-3xl
+            font-black
+            text-xl
+            shadow-2xl
+        "
+    >
+        ▶️ Lektion starten
+    </button>
+
+
+    <div id="status" class="status">
+        Klicke auf „Lektion starten“.
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FORMELL
+     Caché au départ
+====================================================== -->
+
+<section
+    id="formellSection"
+    class="hidden-section"
+>
+
+    <div class="glass rounded-[32px] p-6 md:p-10">
+
+        <div class="text-center mb-8">
+
+            <div class="text-5xl mb-4">
+                🤝
+            </div>
+
+            <h2 class="text-4xl md:text-5xl font-black">
+                Formell
+            </h2>
+
+
+            <!-- AUDIO EXPLICATION FORMELL -->
+
+            <button
+                id="formellAudioButton"
+                type="button"
+                class="
+                    audio-button
+                    mt-5
+                    bg-black
+                    text-white
+                    px-7
+                    py-3
+                    rounded-2xl
+                    font-black
+                    shadow-xl
+                "
+            >
+                ▶️ Erklärung Formell
+            </button>
+
+        </div>
+
+
+        <img
+            class="illustration mb-8"
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80"
+            alt="Formelle Begrüßung"
+        >
+
+
+        <!-- MOTS FORMELS -->
+
+        <div
+            id="formellWords"
+            class="
+                grid
+                grid-cols-1
+                sm:grid-cols-2
+                lg:grid-cols-3
+                gap-5
+            "
+        >
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INFORMELL
+     Caché au départ
+====================================================== -->
+
+<section
+    id="informellSection"
+    class="hidden-section mt-12"
+>
+
+    <div class="glass rounded-[32px] p-6 md:p-10">
+
+        <div class="text-center mb-8">
+
+            <div class="text-5xl mb-4">
+                👋
+            </div>
+
+            <h2 class="text-4xl md:text-5xl font-black">
+                Informell
+            </h2>
+
+
+            <!-- AUDIO EXPLICATION INFORMELL -->
+
+            <button
+                id="informellAudioButton"
+                type="button"
+                class="
+                    audio-button
+                    mt-5
+                    bg-black
+                    text-white
+                    px-7
+                    py-3
+                    rounded-2xl
+                    font-black
+                    shadow-xl
+                "
+            >
+                ▶️ Erklärung Informell
+            </button>
+
+        </div>
+
+
+        <img
+            class="illustration mb-8"
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
+            alt="Informelle Begrüßung"
+        >
+
+
+        <!-- MOTS INFORMELS -->
+
+        <div
+            id="informellWords"
+            class="
+                grid
+                grid-cols-1
+                sm:grid-cols-2
+                lg:grid-cols-3
+                gap-5
+            "
+        >
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VOKABULAR
+====================================================== -->
+
+<section
+    id="vocabSection"
+    class="hidden-section mt-12"
+>
+
+    <div class="glass rounded-[32px] p-6 md:p-10">
+
+        <div class="text-center mb-7">
+
+            <div class="text-4xl mb-3">
+                📚
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-black">
+                Vokabular
+            </h2>
+
+
+            <!-- AUDIO VOCABULAIRE -->
+
+            <button
+                id="vocabAudioButton"
+                type="button"
+                class="
+                    audio-button
+                    mt-5
+                    bg-black
+                    text-white
+                    px-7
+                    py-3
+                    rounded-2xl
+                    font-black
+                    shadow-xl
+                "
+            >
+                ▶️ Vokabular anhören
+            </button>
+
+        </div>
+
+
+        <div class="grid gap-3">
+
+
+            <div class="vocab-item">
+
+                <div class="vocab-german">
+                    Ich heiße …
+                </div>
+
+                <div class="vocab-french">
+                    Je m'appelle …
+                </div>
+
+            </div>
+
+
+            <div class="vocab-item">
+
+                <div class="vocab-german">
+                    Ich komme aus …
+                </div>
+
+                <div class="vocab-french">
+                    Je viens de …
+                </div>
+
+            </div>
+
+
+            <div class="vocab-item">
+
+                <div class="vocab-german">
+                    Wie geht es Ihnen?
+                </div>
+
+                <div class="vocab-french">
+                    Comment allez-vous ?
+                </div>
+
+            </div>
+
+
+            <div class="vocab-item">
+
+                <div class="vocab-german">
+                    Wie geht es dir?
+                </div>
+
+                <div class="vocab-french">
+                    Comment ça va ?
+                </div>
+
+            </div>
+
+
+            <div class="vocab-item">
+
+                <div class="vocab-german">
+                    Mir geht es gut.
+                </div>
+
+                <div class="vocab-french">
+                    Je vais bien.
+                </div>
+
+            </div>
+
+
+            <div class="vocab-item">
+
+                <div class="vocab-german">
+                    Und dir?
+                </div>
+
+                <div class="vocab-french">
+                    Ary ianao ? / Et toi ?
+                </div>
+
+            </div>
+
+
+            <div class="vocab-item">
+
+                <div class="vocab-german">
+                    Ich auch.
+                </div>
+
+                <div class="vocab-french">
+                    Moi aussi. / Izaho ihany koa.
+                </div>
+
+            </div>
+
+
+            <div class="vocab-item">
+
+                <div class="vocab-german">
+                    Ich bin …
+                </div>
+
+                <div class="vocab-french">
+                    Je suis … / Izaho dia …
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NAVIGATION DE BAS DE PAGE
+====================================================== -->
+
+<section class="flex flex-col sm:flex-row justify-between items-center gap-4 mt-14">
+
+    <!-- RETOUR VERS LE SOMMAIRE -->
+    <a
+        href="lektion2.html"
+        class="
+            bg-black
+            text-white
+            px-8
+            py-4
+            rounded-2xl
+            font-black
+            shadow-xl
+            w-full
+            sm:w-auto
+            text-center
+        "
+    >
+        ← Lektion 2
+    </a>
+
+    <!-- SUIVANT VERS LA PAGE 2 -->
+    <a
+        href="lektion2_page2.html"
+        class="
+            bg-black
+            text-white
+            px-8
+            py-4
+            rounded-2xl
+            font-black
+            shadow-xl
+            w-full
+            sm:w-auto
+            text-center
+        "
+    >
+        Seite 2 ➜
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+/* =====================================================
+   GITHUB PAGES AUDIO
+===================================================== */
+
+const AUDIO_BASE =
+    "https://harisoaolivia08-crypto.github.io/HaryFi/Audio/";
+
+
+/* =====================================================
+   4 AUDIOS D'EXPLICATION
+===================================================== */
+
+const audioFiles = {
+
+    start:
+        AUDIO_BASE + "l2_start.mp3",
+
+    formell:
+        AUDIO_BASE + "l2_formell.mp3",
+
+    informell:
+        AUDIO_BASE + "l2_informell.mp3",
+
+    vocabular:
+        AUDIO_BASE + "l2_vocabular.mp3"
+
+};
+
+
+
+/* =====================================================
+   MOTS FORMELS
+===================================================== */
+
+const formellWords = [
+
+    "Guten Morgen",
+    "Guten Tag",
+    "Guten Abend",
+    "Gute Nacht",
+    "Auf Wiedersehen",
+    "Auf Wiederhören"
+
+];
+
+
+const formellAudio = {
+
+    "Guten Morgen":
+        AUDIO_BASE + "l2_guten_morgen.mp3",
+
+    "Guten Tag":
+        AUDIO_BASE + "l2_guten_tag.mp3",
+
+    "Guten Abend":
+        AUDIO_BASE + "l2_guten_abend.mp3",
+
+    "Gute Nacht":
+        AUDIO_BASE + "l2_gute_nacht.mp3",
+
+    "Auf Wiedersehen":
+        AUDIO_BASE + "l2_auf_wiedersehen.mp3",
+
+    "Auf Wiederhören":
+        AUDIO_BASE + "l2_auf_wiederhoeren.mp3"
+
+};
+
+
+
+/* =====================================================
+   MOTS INFORMELS
+===================================================== */
+
+const informellWords = [
+
+    "Servus",
+    "Hallo",
+    "Grüß Gott",
+    "Hi",
+    "Tschüss",
+    "Bis bald",
+    "Bis dann",
+    "Bis nachher",
+    "Bis gleich",
+    "Moin"
+
+];
+
+
+const informellAudio = {
+
+    "Servus":
+        AUDIO_BASE + "l2_servus.mp3",
+
+    "Hallo":
+        AUDIO_BASE + "l2_hallo.mp3",
+
+    "Grüß Gott":
+        AUDIO_BASE + "l2_gruess_gott.mp3",
+
+    "Hi":
+        AUDIO_BASE + "l2_hi.mp3",
+
+    "Tschüss":
+        AUDIO_BASE + "l2_tschuess.mp3",
+
+    "Bis bald":
+        AUDIO_BASE + "l2_bis_bald.mp3",
+
+    "Bis dann":
+        AUDIO_BASE + "l2_bis_dann.mp3",
+
+    "Bis nachher":
+        AUDIO_BASE + "l2_bis_nachher.mp3",
+
+    "Bis gleich":
+        AUDIO_BASE + "l2_bis_gleich.mp3",
+
+    "Moin":
+        AUDIO_BASE + "l2_moin.mp3"
+
+};
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const startButton =
+    document.getElementById("startButton");
+
+const formellAudioButton =
+    document.getElementById("formellAudioButton");
+
+const informellAudioButton =
+    document.getElementById("informellAudioButton");
+
+const vocabAudioButton =
+    document.getElementById("vocabAudioButton");
+
+const status =
+    document.getElementById("status");
+
+const formellSection =
+    document.getElementById("formellSection");
+
+const informellSection =
+    document.getElementById("informellSection");
+
+const vocabSection =
+    document.getElementById("vocabSection");
+
+const formellContainer =
+    document.getElementById("formellWords");
+
+const informellContainer =
+    document.getElementById("informellWords");
+
+
+let currentAudio = null;
+
+
+
+/* =====================================================
+   AUDIO ARRÊTER
+===================================================== */
+
+function stopCurrentAudio() {
+
+    if (currentAudio) {
+
+        currentAudio.pause();
+
+        currentAudio.currentTime = 0;
+
+        currentAudio = null;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LIRE UN AUDIO
+===================================================== */
+
+function playAudio(
+    url,
+    text,
+    card = null
+) {
+
+    stopCurrentAudio();
+
+
+    if (card) {
+
+        card.classList.remove("playing");
+
+        void card.offsetWidth;
+
+        card.classList.add("playing");
+
+    }
+
+
+    status.textContent =
+        "🔊 " + text;
+
+
+    const audio =
+        new Audio(url);
+
+
+    currentAudio =
+        audio;
+
+
+    audio.volume = 1;
+
+
+    audio.addEventListener(
+        "ended",
+        () => {
+
+            if (card) {
+
+                card.classList.remove(
+                    "playing"
+                );
+
+            }
+
+            currentAudio = null;
+
+        },
+        {
+            once: true
+        }
+    );
+
+
+    audio.addEventListener(
+        "error",
+        () => {
+
+            if (card) {
+
+                card.classList.remove(
+                    "playing"
+                );
+
+            }
+
+            status.textContent =
+                "⚠️ Audiodatei noch nicht vorhanden.";
+
+            console.log(
+                "Audio nicht gefunden:",
+                url
+            );
+
+            currentAudio = null;
+
+        },
+        {
+            once: true
+        }
+    );
+
+
+    audio.play()
+        .catch(error => {
+
+            console.log(
+                "Audio konnte nicht abgespielt werden:",
+                error
+            );
+
+        });
+
+}
+
+
+
+/* =====================================================
+   CARTE MOT
+===================================================== */
+
+function createCard(
+    word,
+    audioMap,
+    container
+) {
+
+    const card =
+        document.createElement("button");
+
+
+    card.type =
+        "button";
+
+
+    card.className = `
+        word-card
+        rounded-3xl
+        p-6
+        text-left
+        shadow-xl
+    `;
+
+
+    card.innerHTML = `
+
+        <div class="text-2xl md:text-3xl font-black">
+            ${word}
+        </div>
+
+        <div class="text-sm opacity-60 mt-3">
+            🔊 Aussprache anhören
+        </div>
+
+    `;
+
+
+    card.addEventListener(
+        "click",
+        () => {
+
+            playAudio(
+                audioMap[word],
+                "Aussprache: " + word,
+                card
+            );
+
+        }
+    );
+
+
+    container.appendChild(card);
+
+}
+
+
+
+/* =====================================================
+   CRÉER MOTS FORMELS
+===================================================== */
+
+formellWords.forEach(
+    word => {
+
+        createCard(
+            word,
+            formellAudio,
+            formellContainer
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   CRÉER MOTS INFORMELS
+===================================================== */
+
+informellWords.forEach(
+    word => {
+
+        createCard(
+            word,
+            informellAudio,
+            informellContainer
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   BOUTON LEKTION STARTEN
+===================================================== */
+
+startButton.addEventListener(
+    "click",
+    () => {
+
+        /*
+         * Afficher les 3 grandes sections.
+         */
+
+        formellSection.classList.remove(
+            "hidden-section"
+        );
+
+        formellSection.classList.add(
+            "visible-section"
+        );
+
+
+        informellSection.classList.remove(
+            "hidden-section"
+        );
+
+        informellSection.classList.add(
+            "visible-section"
+        );
+
+
+        vocabSection.classList.remove(
+            "hidden-section"
+        );
+
+        vocabSection.classList.add(
+            "visible-section"
+        );
+
+
+        /*
+         * Jouer uniquement
+         * l'audio général.
+         */
+
+        playAudio(
+            audioFiles.start,
+            "Lektion 2 – Erklärung"
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   BOUTON EXPLICATION FORMELL
+===================================================== */
+
+formellAudioButton.addEventListener(
+    "click",
+    () => {
+
+        playAudio(
+            audioFiles.formell,
+            "Erklärung Formell"
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   BOUTON EXPLICATION INFORMELL
+===================================================== */
+
+informellAudioButton.addEventListener(
+    "click",
+    () => {
+
+        playAudio(
+            audioFiles.informell,
+            "Erklärung Informell"
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   BOUTON VOCABULAR
+===================================================== */
+
+vocabAudioButton.addEventListener(
+    "click",
+    () => {
+
+        playAudio(
+            audioFiles.vocabular,
+            "Vokabular"
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
